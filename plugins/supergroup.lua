@@ -1,4 +1,4 @@
---Begin supergrpup.lua
+﻿--Begin supergrpup.lua
 --Check members #Add supergroup
 local function check_member_super(cb_extra, success, result)
   local receiver = cb_extra.receiver
@@ -189,11 +189,11 @@ local function lock_group_links(msg, data, target)
   end
   local group_link_lock = data[tostring(target)]['settings']['lock_link']
   if group_link_lock == 'yes' then
-    return 'Link posting is already locked'
+    return '🔒قفل ارسال لینک فعال بود🔒'
   else
     data[tostring(target)]['settings']['lock_link'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'Link posting has been locked'
+    return '🔒قفل ارسال لینک فعال شد🔒'
   end
 end
 
@@ -203,68 +203,11 @@ local function unlock_group_links(msg, data, target)
   end
   local group_link_lock = data[tostring(target)]['settings']['lock_link']
   if group_link_lock == 'no' then
-    return 'Link posting is not locked'
+    return '🔓قفل ارسال لینک غیر فعال بود🔓'
   else
     data[tostring(target)]['settings']['lock_link'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'Link posting has been unlocked'
-  end
-end
-
-local function lock_group_emoji(msg, data, target)
-  if not is_momod(msg) then
-    return
-  end
-  local group_emoji_lock = data[tostring(target)]['settings']['lock_emoji']
-  if group_emoji_lock == 'yes' then
-    return 'از قبل قفل است'
-  else
-    data[tostring(target)]['settings']['lock_emoji'] = 'yes'
-    save_data(_config.moderation.data, data)
-    return 'قفل ارسال شکلک فعال شد'
-  end
-end
-
-local function unlock_group_emoji(msg, data, target)
-  if not is_momod(msg) then
-    return
-  end
-  local group_emoji_lock = data[tostring(target)]['settings']['lock_emoji']
-  if group_emoji_lock == 'no' then
-    return 'از قبل آزاد است'
-  else
-    data[tostring(target)]['settings']['emoji'] = 'no'
-    save_data(_config.moderation.data, data)
-    return 'قفل ارسال شکلک فیرفعال شد'
-  end
-end
-
-local function lock_group_shh(msg, data, target)
-  if not is_momod(msg) then
-    return
-  end
- 
- local group_shh_lock = data[tostring(target)]['settings']['lock_shh']
-  if group_shh_lock == 'yes' then
-    return 'از قبل قفل است'
-  else
-    data[tostring(target)]['settings']['lock_shh'] = 'yes'
-    save_data(_config.moderation.data, data)
-    return 'قفل ارسال shh فعال شد'
-  end
-end
-
-local function unlock_group_shh(msg, data, target)
-  if not is_momod(msg) then
-    return
-  end
-  local group_shh_lock = data[tostring(target)]['settings']['lock_shh']
-  if group_shh_lock == 'no' then
-    return 'از قبل آزاد است'
-  else
-    data[tostring(target)]['settings']['shh'] = 'no'
-    save_data(_config.moderation.data, data)
-    return 'قفل ارسال shh فیرفعال شد'
+    return '🔓قفل ارسال لینک غیر فعال شد🔓'
   end
 end
 
@@ -273,15 +216,15 @@ local function lock_group_spam(msg, data, target)
     return
   end
   if not is_owner(msg) then
-    return "Owners only!"
+    return "فقط مدیر گروه!"
   end
   local group_spam_lock = data[tostring(target)]['settings']['lock_spam']
   if group_spam_lock == 'yes' then
-    return 'SuperGroup spam is already locked'
+    return '🔒قفل ارسال اسپم فعال بود🔒'
   else
     data[tostring(target)]['settings']['lock_spam'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'SuperGroup spam has been locked'
+    return '🔒قفل ارسال اسپم فعال شد🔒'
   end
 end
 
@@ -291,11 +234,11 @@ local function unlock_group_spam(msg, data, target)
   end
   local group_spam_lock = data[tostring(target)]['settings']['lock_spam']
   if group_spam_lock == 'no' then
-    return 'SuperGroup spam is not locked'
+    return '🔓قفل ارسال اسپم غیر فعال بود🔓'
   else
     data[tostring(target)]['settings']['lock_spam'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'SuperGroup spam has been unlocked'
+    return '🔓قفل ارسال اسپم غیر فعال شد🔓'
   end
 end
 
@@ -361,12 +304,12 @@ local function lock_group_membermod(msg, data, target)
   end
   local group_member_lock = data[tostring(target)]['settings']['lock_member']
   if group_member_lock == 'yes' then
-    return 'SuperGroup members are already locked'
+    return '🔒قفل جوین شدن فعال بود🔒'
   else
     data[tostring(target)]['settings']['lock_member'] = 'yes'
     save_data(_config.moderation.data, data)
   end
-  return 'SuperGroup members has been locked'
+  return '🔒قفل جوین شدن فعال شد🔒'
 end
 
 local function unlock_group_membermod(msg, data, target)
@@ -375,11 +318,11 @@ local function unlock_group_membermod(msg, data, target)
   end
   local group_member_lock = data[tostring(target)]['settings']['lock_member']
   if group_member_lock == 'no' then
-    return 'SuperGroup members are not locked'
+    return '🔓قفل جوین شدن غیر فعال بود🔓'
   else
     data[tostring(target)]['settings']['lock_member'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'SuperGroup members has been unlocked'
+    return '🔓قفل جوین شدن غیر فعال شد🔓'
   end
 end
 
@@ -445,11 +388,11 @@ local function lock_group_sticker(msg, data, target)
   end
   local group_sticker_lock = data[tostring(target)]['settings']['lock_sticker']
   if group_sticker_lock == 'yes' then
-    return 'Sticker posting is already locked'
+    return '🔒قفل ارسال استیکر فعال بود🔒'
   else
     data[tostring(target)]['settings']['lock_sticker'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'Sticker posting has been locked'
+    return '🔒قفل ارسال استیکر فعال شد🔒'
   end
 end
 
@@ -459,11 +402,11 @@ local function unlock_group_sticker(msg, data, target)
   end
   local group_sticker_lock = data[tostring(target)]['settings']['lock_sticker']
   if group_sticker_lock == 'no' then
-    return 'Sticker posting is already unlocked'
+    return '🔓قفل ارسال استیکر غیر فعال بود🔓'
   else
     data[tostring(target)]['settings']['lock_sticker'] = 'no'
     save_data(_config.moderation.data, data)
-    return 'Sticker posting has been unlocked'
+    return '🔓قفل ارسال استیکر غیر فعال شد🔓'
   end
 end
 
@@ -622,7 +565,7 @@ end
 		end
 	end
   local settings = data[tostring(target)]['settings']
-  local text = "SuperGroup settings:\nLock shh : "..settings.lock_shh.."\nLock emoji : "..settings.lock_emoji.."\nLock links : "..settings.lock_link.."\nLock flood: "..settings.flood.."\nFlood sensitivity : "..NUM_MSG_MAX.."\nLock spam: "..settings.lock_spam.."\nLock Arabic: "..settings.lock_arabic.."\nLock Member: "..settings.lock_member.."\nLock RTL: "..settings.lock_rtl.."\nLock Tgservice : "..settings.lock_tgservice.."\nLock sticker: "..settings.lock_sticker.."\nPublic: "..settings.public.."\nStrict settings: "..settings.strict
+  local text = "SuperGroup settings:\nLock links : "..settings.lock_link.."\nLock flood: "..settings.flood.."\nFlood sensitivity : "..NUM_MSG_MAX.."\nLock spam: "..settings.lock_spam.."\nLock Arabic: "..settings.lock_arabic.."\nLock Member: "..settings.lock_member.."\nLock RTL: "..settings.lock_rtl.."\nLock Tgservice : "..settings.lock_tgservice.."\nLock sticker: "..settings.lock_sticker.."\nPublic: "..settings.public.."\nStrict settings: "..settings.strict
   return text
 end
 
@@ -1711,14 +1654,6 @@ local function run(msg, matches)
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked link posting ")
 				return lock_group_links(msg, data, target)
 			end
-			if matches[2] == 'emoji' then
-				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked emoji posting ")
-				return lock_group_emoji(msg, data, target)
-			end
-                        if matches[2] == 'shh' then
-				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked shh posting ")
-				return lock_group_shh(msg, data, target)
-			end
 			if matches[2] == 'spam' then
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked spam ")
 				return lock_group_spam(msg, data, target)
@@ -1762,14 +1697,6 @@ local function run(msg, matches)
 			if matches[2] == 'links' then
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked link posting")
 				return unlock_group_links(msg, data, target)
-			end
-			if matches[2] == 'emoji' then
-				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked emoji posting")
-				return unlock_group_emoji(msg, data, target)
-			end
-                        if matches[2] == 'shh' then
-				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked shh posting")
-				return unlock_group_shh(msg, data, target)
 			end
 			if matches[2] == 'spam' then
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked spam")
@@ -2037,7 +1964,7 @@ local function run(msg, matches)
 		end
 
 		if matches[1] == 'help' and not is_owner(msg) then
-			text = "Message /superhelp to @Teleseed in private for SuperGroup help"
+			text = "به @Dr_Root مراجعه کنید"
 			reply_msg(msg.id, text, ok_cb, false)
 		elseif matches[1] == 'help' and is_owner(msg) then
 			local name_log = user_print_name(msg.from)
